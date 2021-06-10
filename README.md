@@ -13,6 +13,10 @@ Create a small application containing an orderbook to display to stakeholders th
 The orderbook will be made up of four main parts and mirror the following design: 
 
 
-#### Desktop design
+#### Desktop Design
 
-![](src/images/desktop.png)
+![](src/assets/images/desktop.png)
+
+#### Mobile Design
+
+![](src/assets/images/mobile.png)

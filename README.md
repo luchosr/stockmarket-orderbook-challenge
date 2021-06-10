@@ -15,4 +15,4 @@ The orderbook will be made up of four main parts and mirror the following design
 
 #### Desktop design
 
-![](images/desktop.png)
+![](src/images/desktop.png)

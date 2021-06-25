@@ -17,7 +17,7 @@ The orderbook will be made up of four main parts and mirror the following design
 
 
 #### Desktop Design 
-<br />
+<hr />
 
 <img src="src/assets/images/desktop.png" alt="desktop view" width="400px"> <br />
 
@@ -28,7 +28,7 @@ The orderbook will be made up of four main parts and mirror the following design
 
 #### Mobile Design  
 
-<br />
+<hr />
 <img src="src/assets/images/mobile.png" alt="mobile view" width="200px">
 <br />
 <br/>
@@ -85,7 +85,8 @@ Clicking this button should force the WebSocket feed to throw an error. This is 
 
 1. Application architecture and framework best practices for the framework in use are followed and understood. 
 2. All necessary areas of the codebase are strictly typed, and definitions are logically named and reused where possible. 
-3. Code is formatted well and easy to follow. Variable and function names make sense 4. Any dependencies that have been added have logical reasons for their inclusion, and have been implemented correctly. 
+3. Code is formatted well and easy to follow. Variable and function names make sense.
+4. Any dependencies that have been added have logical reasons for their inclusion, and have been implemented correctly. 
 5. Understanding of client side state management is displayed. 
 6. Rendering performance is clearly considered and the application UI runs smoothly on all evergreen browsers and low end devices. 
 7. Application gracefully handles WebSocket error cases and is resistant to unexpected messages. 

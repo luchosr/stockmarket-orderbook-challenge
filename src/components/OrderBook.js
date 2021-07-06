@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-const StockRow = () => {
+const OrderBook = () => {
   const [orders, setOrders] = useState([]);
-  const currencyPair = "PI_XBTUSD";
+  const currencyPair = "btcusd";
+
   const currencyArray = currencyPair.toUpperCase().match(/.{1,3}/g);
 
   useEffect(() => {
     const subscribe = {
-      event: "subscribe",
-      feed: "book_ui_1",
-      product_ids: ["PI_XBTUSD"],
+      event: "bts:subscribe",
+      data: {
+        channel: `order_book_${currencyPair}`,
+      },
     };
+    const ws = new WebSocket("wss://ws.bitstamp.net");
 
-    const ws = new WebSocket("wss://www.cryptofacilities.com/ws/v1");
     ws.onopen = () => {
-      console.log("ws opened");
       ws.send(JSON.stringify(subscribe));
     };
     ws.onmessage = (event) => {
       const response = JSON.parse(event.data);
-      // setOrders(response.data);
-      console.log("las ordenes son ", response);
+      setOrders(response.data);
     };
-
     ws.onclose = () => {
-      console.log("ws closed");
       ws.close();
     };
 
@@ -33,7 +31,7 @@ const StockRow = () => {
     };
   }, [currencyPair]);
 
-  // const { price, size } = orders;
+  const { bids, asks } = orders;
   const orderRows = (arr) =>
     arr &&
     arr.map((item, index) => (
@@ -42,7 +40,6 @@ const StockRow = () => {
         <td> {item[0]} </td>
       </tr>
     ));
-
   const orderHead = (title) => (
     <thead>
       <tr>
@@ -54,14 +51,19 @@ const StockRow = () => {
       </tr>
     </thead>
   );
-
   return (
     <div className="order-container">
-      <table>{orderHead("Bids")}</table>
+      <table>
+        {orderHead("Bids")}
+        <tbody>{orderRows(bids)}</tbody>
+      </table>
 
-      <table>{orderHead("Asks")}</table>
+      <table>
+        {orderHead("Asks")}
+        <tbody>{orderRows(asks)}</tbody>
+      </table>
     </div>
   );
 };
 
-export default StockRow;
+export default OrderBook;
